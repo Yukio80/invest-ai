@@ -8,4 +8,8 @@ export const analisarAcao = (ticker, perfil) => {
   return api.post('/analisar', { ticker, perfil });
 };
 
+export const getRanking = (perfil) => {
+  return api.get(`/ranking?perfil=${perfil}`);
+};
+
 export default api;

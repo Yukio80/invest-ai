@@ -12,13 +12,14 @@ def analisar(request: AnaliseRequest):
     if not dados:
         raise HTTPException(status_code=404, detail="Ação não encontrada")
     
-    score = score_acao(request.ticker, request.perfil)
+    # Agora passamos os dados para o score_acao calcular a nota real
+    score = score_acao(request.ticker, request.perfil, dados)
     
     return AnaliseResponse(
         ticker=request.ticker,
         score=score,
-        recomendacao="Positivo" if score > 0.5 else "Neutro",
-        explicacao=f"Análise baseada em métricas fundamentalistas para perfil {request.perfil}.",
+        recomendacao="Positivo" if score > 0.6 else "Neutro" if score > 0.4 else "Negativo",
+        explicacao=f"A ação {request.ticker} apresenta score {score} para o perfil {request.perfil} com base em métricas fundamentalistas.",
         metricas=dados,
         shap=gerar_explicacao_shap(request.ticker, None, dados),
         disclaimer="Esta análise é informativa e não constitui recomendação de investimento conforme regulação CVM."
