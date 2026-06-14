@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from .routers import analise, ranking
+from .routers import analise, ranking, oportunidades
 import os
 
 app = FastAPI(title="Invest AI Assistant API")
@@ -17,6 +17,7 @@ app.add_middleware(
 
 app.include_router(analise.router, prefix="/api")
 app.include_router(ranking.router, prefix="/api")
+app.include_router(oportunidades.router, prefix="/api")
 
 # Servindo arquivos estáticos do frontend
 frontend_path = os.path.join(os.getcwd(), "frontend", "dist")

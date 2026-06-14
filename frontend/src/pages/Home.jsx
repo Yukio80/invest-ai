@@ -33,6 +33,12 @@ const Home = () => (
       }}>
         🏆 Carteira Recomendada
       </Link>
+      <Link to="/oportunidades" style={{
+        background: 'rgba(0,191,166,0.2)', color: '#00E5C0', padding: '15px', borderRadius: '10px',
+        textAlign: 'center', fontWeight: 'bold', fontSize: '16px', border: '1px solid rgba(0,191,166,0.3)'
+      }}>
+        🎯 Oportunidades do Mercado
+      </Link>
     </nav>
   </div>
 );
