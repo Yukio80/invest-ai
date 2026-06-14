@@ -39,6 +39,12 @@ const Home = () => (
       }}>
         🎯 Oportunidades do Mercado
       </Link>
+      <Link to="/portfolio" style={{
+        background: 'rgba(255,255,255,0.1)', color: '#fff', padding: '15px', borderRadius: '10px',
+        textAlign: 'center', fontWeight: 'bold', fontSize: '16px'
+      }}>
+        📋 Carteiras Recomendadas
+      </Link>
     </nav>
   </div>
 );

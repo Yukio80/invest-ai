@@ -24,4 +24,12 @@ export const getCategorias = () => {
   return api.get('/oportunidades/categorias');
 };
 
+export const getPortfolio = (perfil) => {
+  return api.get(`/portfolio?perfil=${perfil}`);
+};
+
+export const getPerfis = () => {
+  return api.get('/portfolio/perfis');
+};
+
 export default api;
