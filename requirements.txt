@@ -1,9 +1,5 @@
 fastapi
-uvicorn
 yfinance
 pandas
 requests
 beautifulsoup4
-shap
-scikit-learn
-python-dotenv
