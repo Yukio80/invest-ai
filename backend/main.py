@@ -20,15 +20,18 @@ app.include_router(ranking.router, prefix="/api")
 app.include_router(oportunidades.router, prefix="/api")
 app.include_router(portfolio.router, prefix="/api")
 
-# Servindo arquivos estáticos do frontend
-frontend_path = os.path.join(os.getcwd(), "frontend", "dist")
-if os.path.exists(frontend_path):
-    app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
+# Servindo arquivos estáticos do frontend (apenas fora do Vercel)
+is_vercel = os.environ.get("VERCEL", "") == "1"
 
-@app.get("/")
-def read_root():
-    return {"message": "Invest AI Assistant API"}
+if not is_vercel:
+    frontend_path = os.path.join(os.getcwd(), "frontend", "dist")
+    if os.path.exists(frontend_path):
+        app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
 
-@app.exception_handler(404)
-async def not_found_exception_handler(request, exc):
-    return FileResponse(os.path.join(frontend_path, "index.html"))
+    @app.get("/")
+    def read_root():
+        return {"message": "Invest AI Assistant API"}
+
+    @app.exception_handler(404)
+    async def not_found_exception_handler(request, exc):
+        return FileResponse(os.path.join(frontend_path, "index.html"))

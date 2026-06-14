@@ -1,0 +1,17 @@
+{
+  "buildCommand": "cd frontend && npm run build",
+  "outputDirectory": "frontend/dist",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.12",
+      "maxDuration": 30
+    }
+  },
+  "github": {
+    "silent": true
+  }
+}
