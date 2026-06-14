@@ -1,11 +1,16 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, Depends
 from ..services.data_pipeline import get_universo_smallcaps, get_dados_acao
 from ..services.model import score_acao
+from ..services.auth import verificar_cota
 
 router = APIRouter()
 
 @router.get("/ranking")
-def get_ranking(perfil: str = Query("moderado"), limite: int = Query(10)):
+def get_ranking(
+    perfil: str = Query("moderado"),
+    limite: int = Query(10),
+    user: dict = Depends(verificar_cota),
+):
     # 1. Busca o universo de ações
     universo = get_universo_smallcaps()
     tickers = universo["ticker"].tolist()

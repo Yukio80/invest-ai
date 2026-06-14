@@ -1,13 +1,14 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from ..models.schemas import AnaliseRequest, AnaliseResponse
 from ..services.data_pipeline import get_dados_acao
 from ..services.model import score_acao
 from ..services.shap_explainer import gerar_explicacao_shap
+from ..services.auth import verificar_cota
 
 router = APIRouter()
 
 @router.post("/analisar", response_model=AnaliseResponse)
-def analisar(request: AnaliseRequest):
+def analisar(request: AnaliseRequest, user: dict = Depends(verificar_cota)):
     dados = get_dados_acao(request.ticker)
     if not dados:
         raise HTTPException(status_code=404, detail="Ação não encontrada")
