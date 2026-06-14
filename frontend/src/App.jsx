@@ -4,6 +4,9 @@ import Home from './pages/Home';
 import AnalisePage from './pages/Analise';
 import RankingPage from './pages/Ranking';
 import PortfolioPage from './pages/Portfolio';
+import OportunidadesPage from './pages/Oportunidades';
+import ComparadorPage from './pages/Comparador';
+import AnaliseTecnicaPage from './pages/AnaliseTecnica';
 
 const App = () => (
   <BrowserRouter>
@@ -13,6 +16,8 @@ const App = () => (
       <Route path="/ranking" element={<RankingPage />} />
       <Route path="/oportunidades" element={<OportunidadesPage />} />
       <Route path="/portfolio" element={<PortfolioPage />} />
+      <Route path="/comparador" element={<ComparadorPage />} />
+      <Route path="/analise-tecnica" element={<AnaliseTecnicaPage />} />
     </Routes>
   </BrowserRouter>
 );

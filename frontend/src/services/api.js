@@ -12,10 +12,6 @@ export const getRanking = (perfil) => {
   return api.get(`/ranking?perfil=${perfil}`);
 };
 
-export const getOportunidades = (categoria, perfil) => {
-  return api.get(`/oportunidades?categoria=${categoria}&perfil=${perfil}`);
-};
-
 export const getOportunidadesTodas = (perfil) => {
   return api.get(`/oportunidades/todas?perfil=${perfil}`);
 };
@@ -30,6 +26,14 @@ export const getPortfolio = (perfil) => {
 
 export const getPerfis = () => {
   return api.get('/portfolio/perfis');
+};
+
+export const compararAtivos = (tickers, perfil) => {
+  return api.get(`/comparar?tickers=${tickers.join(',')}&perfil=${perfil}`);
+};
+
+export const getAnaliseTecnica = (ticker, periodo = '6mo') => {
+  return api.get(`/analise-tecnica?ticker=${ticker}&periodo=${periodo}`);
 };
 
 export default api;

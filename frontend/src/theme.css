@@ -7,33 +7,40 @@
   --surface: #FFFFFF;
   --text-primary: #0D1B2A;
   --text-secondary: #546E7A;
+  --border: #E0E0E0;
   --success: #00BFA6;
   --warning: #FFB300;
   --danger: #FF5252;
+  --header-bg: #0D1B2A;
+  --header-text: #FFFFFF;
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --hover-bg: rgba(0,191,166,0.06);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+[data-theme="dark"] {
+  --bg: #0A1118;
+  --surface: #15202B;
+  --text-primary: #E8EAED;
+  --text-secondary: #9AA0A6;
+  --border: #2D3748;
+  --header-bg: #060B12;
+  --header-text: #E8EAED;
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  --hover-bg: rgba(0,191,166,0.1);
 }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: var(--bg);
   color: var(--text-primary);
   line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
 }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-a:hover {
-  color: var(--accent-light);
-}
+a { color: var(--accent); text-decoration: none; font-weight: 600; }
+a:hover { color: var(--accent-light); }
 
 button {
   background: var(--accent);
@@ -43,37 +50,44 @@ button {
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.2s;
+  transition: background 0.2s, opacity 0.2s;
 }
 
-button:hover {
-  background: var(--accent-light);
-}
+button:hover { background: var(--accent-light); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
 
-input {
+input, select {
   padding: 10px;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border);
   border-radius: 6px;
   font-size: 14px;
   outline: none;
   transition: border-color 0.2s;
+  background: var(--surface);
+  color: var(--text-primary);
 }
 
-input:focus {
-  border-color: var(--accent);
-}
+input:focus, select:focus { border-color: var(--accent); }
 
-.perfil-selector button {
-  background: var(--primary-dark);
-}
-
-.perfil-selector button:hover {
-  background: var(--primary);
-}
+.perfil-selector button { background: var(--primary-dark); color: #fff; }
+.perfil-selector button:hover { background: var(--primary); }
+.perfil-selector button.active { background: var(--accent); }
 
 .acao-card {
   background: var(--surface);
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: var(--card-shadow);
+  transition: background 0.3s, box-shadow 0.3s;
 }
+
+.tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.tag-positivo { background: rgba(0,191,166,0.15); color: var(--success); }
+.tag-neutro { background: rgba(255,179,0,0.15); color: var(--warning); }
+.tag-negativo { background: rgba(255,82,82,0.15); color: var(--danger); }

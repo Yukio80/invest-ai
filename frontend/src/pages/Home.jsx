@@ -21,32 +21,41 @@ const Home = () => (
       </div>
     </div>
     <nav style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%', maxWidth: '300px' }}>
-      <Link to="/analise" style={{
-        background: '#00BFA6', color: '#0D1B2A', padding: '15px', borderRadius: '10px',
-        textAlign: 'center', fontWeight: 'bold', fontSize: '16px'
-      }}>
+      <Link to="/analise" style={styles.primary}>
         🔍 Analisar Ação
       </Link>
-      <Link to="/ranking" style={{
-        background: 'rgba(255,255,255,0.1)', color: '#fff', padding: '15px', borderRadius: '10px',
-        textAlign: 'center', fontWeight: 'bold', fontSize: '16px'
-      }}>
+      <Link to="/ranking" style={styles.secondary}>
         🏆 Carteira Recomendada
       </Link>
-      <Link to="/oportunidades" style={{
-        background: 'rgba(0,191,166,0.2)', color: '#00E5C0', padding: '15px', borderRadius: '10px',
-        textAlign: 'center', fontWeight: 'bold', fontSize: '16px', border: '1px solid rgba(0,191,166,0.3)'
-      }}>
+      <Link to="/oportunidades" style={styles.outlined}>
         🎯 Oportunidades do Mercado
       </Link>
-      <Link to="/portfolio" style={{
-        background: 'rgba(255,255,255,0.1)', color: '#fff', padding: '15px', borderRadius: '10px',
-        textAlign: 'center', fontWeight: 'bold', fontSize: '16px'
-      }}>
+      <Link to="/portfolio" style={styles.secondary}>
         📋 Carteiras Recomendadas
+      </Link>
+      <Link to="/comparador" style={styles.secondary}>
+        📊 Comparador de Ativos
+      </Link>
+      <Link to="/analise-tecnica" style={styles.outlined}>
+        📈 Análise Técnica
       </Link>
     </nav>
   </div>
 );
+
+const styles = {
+  primary: {
+    background: '#00BFA6', color: '#0D1B2A', padding: '15px', borderRadius: '10px',
+    textAlign: 'center', fontWeight: 'bold', fontSize: '16px'
+  },
+  secondary: {
+    background: 'rgba(255,255,255,0.1)', color: '#fff', padding: '15px', borderRadius: '10px',
+    textAlign: 'center', fontWeight: 'bold', fontSize: '16px'
+  },
+  outlined: {
+    background: 'rgba(0,191,166,0.2)', color: '#00E5C0', padding: '15px', borderRadius: '10px',
+    textAlign: 'center', fontWeight: 'bold', fontSize: '16px', border: '1px solid rgba(0,191,166,0.3)'
+  }
+};
 
 export default Home;

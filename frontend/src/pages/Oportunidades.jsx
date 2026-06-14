@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Logo from '../components/Logo';
+import Header from '../components/Header';
 import PerfilSelector from '../components/PerfilSelector';
 import { getOportunidadesTodas, getCategorias } from '../services/api';
 
@@ -35,12 +34,7 @@ const OportunidadesPage = () => {
 
   return (
     <div>
-      <div style={{ background: 'var(--primary-dark)', padding: '15px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#fff', textDecoration: 'none' }}>
-          <Logo size={30} />
-          <span style={{ fontWeight: 'bold', fontSize: '18px' }}>Invest AI</span>
-        </Link>
-      </div>
+      <Header />
       <div style={{ maxWidth: 800, margin: '30px auto', padding: '0 20px' }}>
         <h1 style={{ color: 'var(--primary-dark)', fontSize: 24, marginBottom: 10 }}>Oportunidades do Mercado</h1>
         <p style={{ color: 'var(--text-secondary)', marginBottom: 20 }}>
